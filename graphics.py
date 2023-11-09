@@ -22,9 +22,9 @@ def draw_graph_time():
             time_sum = 0
 
             for j in range(1, i, 10000):
-                start_time = time.time()
                 str = ''.join(choice(ascii_letters) for _ in range(i))
                 sub_str = ''.join(choice(ascii_letters) for _ in range(j))
+                start_time = time.time()
                 method.find_substring(str, sub_str)
                 end_time = time.time()
 
@@ -53,11 +53,11 @@ def draw_graph_memory():
             memory_sum = 0
 
             for j in range(1, i, 10000):
-                tracemalloc.start()
                 str = ''.join(choice(ascii_letters) for _ in range(i))
                 sub_str = ''.join(choice(ascii_letters) for _ in range(j))
+                tracemalloc.start()
                 method.find_substring(str, sub_str)
-                memory_sum += tracemalloc.get_traced_memory()[1]
+                memory_sum += tracemalloc.get_traced_memory()[0]
 
             x_memory.append(i)
             y_memory.append(memory_sum)

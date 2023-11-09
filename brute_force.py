@@ -1,11 +1,12 @@
 def find_substring(string, substring):
     st_len = len(string)
     sub_len = len(substring)
-    i = 0
-    while i <= st_len - sub_len:
-        if string[i] == substring[0]:
-            if string[i: i + sub_len] == substring:  # сравниваем выбранную подстроке в строке с искомой подстрокой
-                # обрезаем с i символа
-                return True
-        i = i + 1
+    for i in range(st_len - sub_len + 1):
+        for j in range(sub_len):
+            if string[i + j] != substring[j]:
+                break
+            else:
+                j = j + 1
+        if j == sub_len:
+            return True
     return False

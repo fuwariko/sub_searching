@@ -16,9 +16,8 @@ def z_function(string):
 
 def find_substring(string, substring):
     z_func = z_function(substring + "#" + string)
-    st_len = len(string)
     sub_len = len(substring)
-    for i in range(sub_len + 1, st_len + 2):
-        if z_func[i] == sub_len:
+    for i in range(1, len(z_func)):
+        if z_func[i] == sub_len:  # если длина подстроки совпадает со значением зет функции то подстрока найдена
             return True
     return False
