@@ -1,16 +1,19 @@
 import time
 import tracemalloc
 import matplotlib.pyplot as plt
+from random import choice
+from string import ascii_letters
 
 import brute_force
 import knut_morris_pratt
 import rabin_karp
 import aho_corasick
+import z_function
 
 
 def draw_graph_time():
-    methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick]
-    titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick']
+    methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick, z_function]
+    titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick', "z-function"]
 
     for method, title in zip(methods, titles):
         x_time, y_time = [], []
@@ -20,9 +23,9 @@ def draw_graph_time():
 
             for j in range(1, i, 10000):
                 start_time = time.time()
-                string = 'a' * i
-                sub_str = 'a' * j + 'b'
-                method.find_substring(string, sub_str)
+                str = ''.join(choice(ascii_letters) for _ in range(i))
+                sub_str = ''.join(choice(ascii_letters) for _ in range(j))
+                method.find_substring(str, sub_str)
                 end_time = time.time()
 
                 time_sum += ((end_time - start_time) * 10 ** 3)
@@ -40,8 +43,8 @@ def draw_graph_time():
 
 
 def draw_graph_memory():
-    methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick]
-    titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick']
+    methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick, z_function]
+    titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick', "z-function"]
 
     for method, title in zip(methods, titles):
         x_memory, y_memory = [], []
@@ -51,10 +54,10 @@ def draw_graph_memory():
 
             for j in range(1, i, 10000):
                 tracemalloc.start()
-                string = 'a' * i
-                sub_str = 'a' * j + 'b'
-                method.find_substring(string, sub_str)
-                memory_sum += tracemalloc.get_traced_memory()[0]
+                str = ''.join(choice(ascii_letters) for _ in range(i))
+                sub_str = ''.join(choice(ascii_letters) for _ in range(j))
+                method.find_substring(str, sub_str)
+                memory_sum += tracemalloc.get_traced_memory()[1]
 
             x_memory.append(i)
             y_memory.append(memory_sum)

@@ -3,6 +3,7 @@ import brute_force
 import rabin_karp
 import knut_morris_pratt
 import aho_corasick
+import z_function
 
 
 class TestMethods(unittest.TestCase):
@@ -54,6 +55,19 @@ class TestMethods(unittest.TestCase):
             True)
         self.assertEqual(
             aho_corasick.find_substring("D" * 10000 + "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDA",
+                                             "DA"), True)
+
+    def test_z_function(self):
+        self.assertEqual(z_function.find_substring("DDA", "DA"), True)
+        self.assertEqual(z_function.find_substring("AABAACAADAAAABDAADB", "AABA"), True)
+        self.assertEqual(z_function.find_substring("ABABDABACDABABCABAB", "ABABCABAB"), True)
+        self.assertEqual(z_function.find_substring("ABABDABACDABABCABAB", "AA"), False)
+        self.assertEqual(
+            z_function.find_substring("bc" * 1000000 + "abcdefghijklmnopqrstuvwxyz",
+                                             "abcdefghijklmnopqrstuvwxyz"),
+            True)
+        self.assertEqual(
+            z_function.find_substring("D" * 10000 + "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDA",
                                              "DA"), True)
 
 
