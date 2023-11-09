@@ -33,7 +33,7 @@ def draw_graph_time():
             x_time.append(i)
             y_time.append(time_sum)
 
-        plt.subplot(2, 1, 2)
+        plt.subplot(2, 1, 1)
         plt.plot(x_time, y_time, label=title)
         plt.xlabel('Длина строки')
         plt.ylabel('Время')
@@ -62,7 +62,7 @@ def draw_graph_memory():
             x_memory.append(i)
             y_memory.append(memory_sum)
 
-        plt.subplot(2, 1, 2)
+        plt.subplot(2, 1, 1)
         plt.plot(x_memory, y_memory, label=title)
         plt.xlabel('Длина строки')
         plt.ylabel('Память')
