@@ -53,16 +53,16 @@ def draw_graph_memory(method):
 def draw_time_graphs():
     methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick, z_function]
     titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick', "z-function"]
-    k = 1
+    graph_num = 1
 
     for method, title in zip(methods, titles):
         x, y = draw_graph_time(method)
-        plt.subplot(5, 2, k)
+        plt.subplot(5, 2, graph_num)
         plt.plot(x, y, label=title)
         plt.xlabel('Длина строки')
         plt.ylabel('Время')
         plt.legend()
-        k = k + 1
+        graph_num = graph_num + 1
 
     plt.show()
 
@@ -70,16 +70,16 @@ def draw_time_graphs():
 def draw_memory_graphs():
     methods = [brute_force, knut_morris_pratt, rabin_karp, aho_corasick, z_function]
     titles = ['Brute Force', 'Knut-Morris-Pratt', 'Rabin-Karp', 'Aho-Corasick', "z-function"]
-    k = 1
+    graph_num = 1
 
     for method, title in zip(methods, titles):
         x, y = draw_graph_memory(method)
-        plt.subplot(5, 2, k)
+        plt.subplot(5, 2, graph_num)
         plt.plot(x, y, label=title)
         plt.xlabel('Длина строки')
         plt.ylabel('Память')
         plt.legend()
-        k = k + 1
+        graph_num = graph_num + 1
 
     plt.show()
 
